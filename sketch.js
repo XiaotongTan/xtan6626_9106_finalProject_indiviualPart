@@ -1,12 +1,28 @@
 let song, analyzer;
 
 function preload() {
-  song = loadSound('assets\Cu Gee - YOSEMITESLOW.mp3')
+  song = loadSound('assets/Cu Gee - YOSEMITESLOW.mp3')
 }
 
 function setup() {
   createCanvas(800, 800);
+  analyzer = new p5.Amplitude();
+
+  analyzer.setInput(song);
+
+  let button = createButton('Play/Pause');
+
+  button.position(width - button.width , button.height + 10);
+  button.mousePressed(play_pause);
   draw();
+}
+
+function play_pause() {
+  if (song.isPlaying()) {
+    song.pause();
+  } else {
+    song.play();
+  }
 }
 
 function draw() {
@@ -432,4 +448,9 @@ function drawSquare(squares, col) {
   for (let square of squares) {
     rect(square.x, square.y, 18 * width / 800, 18 * height / 800);
   }
+}
+
+function windowResized() {
+  resizeCanvas(min(windowWidth, windowHeight), min(windowWidth, windowHeight));
+  draw();
 }
