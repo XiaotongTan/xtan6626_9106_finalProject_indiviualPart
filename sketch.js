@@ -1,10 +1,16 @@
+let song, analyzer;
+
+function preload() {
+  song = loadSound('assets\Cu Gee - YOSEMITESLOW.mp3')
+}
+
 function setup() {
   createCanvas(800, 800);
   draw();
 }
 
 function draw() {
-  background(242, 242, 240); // 白色背景
+  background(242, 242, 240); // white backgrouond
 
   let h1 = 18 * height / 800;
   let yellowLines1 = [
