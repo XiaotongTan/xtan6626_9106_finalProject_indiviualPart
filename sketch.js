@@ -1,33 +1,34 @@
+// Define global variables
 let song, analyzer;
 
+//Initialize the canvas and audio analyzer
 function preload() {
   song = loadSound('assets/Cu Gee - YOSEMITESLOW.mp3')
 }
-
 function setup() {
   createCanvas(800, 800);
-  analyzer = new p5.Amplitude();
 
-  analyzer.setInput(song);
+  analyzer = new p5.Amplitude(); // create a new Amplitude analyzer to analyze the volume of the song
 
-  let button = createButton('Play/Pause');
-
-  button.position(width - button.width , button.height + 10);
-  button.mousePressed(play_pause);
-  draw();
+  analyzer.setInput(song);  // Connect the input of the analyzer to the song
+  let button = createButton('Play/Pause');  //Add a button for play/pause
+  button.position(20, button.height + 10); //put the button at top-left concer
+  button.mousePressed(play_pause);//mouse pressed to run this function
 }
 
 function play_pause() {
   if (song.isPlaying()) {
     song.pause();
   } else {
-    song.play();
+    song.loop();
   }
 }
 
+
 function draw() {
   background(242, 242, 240); // white backgrouond
-
+  
+  //a series of frawing function
   let h1 = 18 * height / 800;
   let yellowLines1 = [
     { x: 0, y: 18 * height / 800, w: width, h: h1 },
@@ -44,7 +45,6 @@ function draw() {
     { x: 0, y: 708 * height / 800, w: 65 * width / 800, h: h1 },
     { x: 0, y: 756 * height / 800, w: width, h: h1 },
   ];
-
   let w1 = 18 * width / 800;
   let yellowLines2 = [
     { x: 20 * width / 800, y: 0, w: w1, h: 298 * height / 800 },
@@ -61,7 +61,6 @@ function draw() {
     { x: 738 * width / 800, y: 500 * height / 800, w: w1, h: 156 * height / 800 },
     { x: 769 * width / 800, y: 0, w: w1, h: height },
   ];
-
   let yellowPart = [
     { x: 110 * width / 800, y: 47 * height / 800, w: 70 * width / 800, h: 25 * height / 800 },
     { x: 110 * width / 800, y: 213 * height / 800, w: 70 * width / 800, h: 52 * height / 800 },
@@ -72,12 +71,10 @@ function draw() {
     { x: 690 * width / 800, y: 387 * height / 800, w: 79 * width / 800, h: 40 * height / 800 },
     { x: 690 * width / 800, y: 578 * height / 800, w: 79 * width / 800, h: 40 * height / 800 },
   ];
-
   let yellowPart1 = [
     { x: 240 * width / 800, y: 400 * height / 800, w: 33 * width / 800, h: 27 * height / 800 },
     { x: 545 * width / 800, y: 208 * height / 800, w: 37 * width / 800, h: 28 * height / 800 },
   ];
-
   let redPart = [
     { x: 124 * width / 800, y: 36 * height / 800, w: 36 * width / 800, h: 91 * height / 800 },
     { x: 209 * width / 800, y: 36 * height / 800, w: 58 * width / 800, h: 68 * height / 800 },
@@ -89,7 +86,6 @@ function draw() {
     { x: 690 * width / 800, y: 604 * height / 800, w: 48 * width / 800, h: 36 * height / 800 },
     { x: 360 * width / 800, y: 756 * height / 800, w: 52 * width / 800, h: 38 * height / 800 },
   ];
-
   let bluePart = [
     { x: 66 * width / 800, y: 158 * height / 800, w: 44 * width / 800, h: 42 * height / 800 },
     { x: 66 * width / 800, y: 535 * height / 800, w: 44 * width / 800, h: 45 * height / 800 },
@@ -99,7 +95,6 @@ function draw() {
     { x: 721 * width / 800, y: 82 * height / 800, w: 48 * width / 800, h: 27 * height / 800 },
     { x: 690 * width / 800, y: 534 * height / 800, w: 48 * width / 800, h: 44 * height / 800 },
   ];
-
   let greyPart = [
     { x: 92 * width / 800, y: 47 * height / 800, w: 18 * width / 800, h: 25 * height / 800 },
     { x: 124 * width / 800, y: 72 * height / 800, w: 36 * width / 800, h: 19 * height / 800 },
@@ -119,7 +114,6 @@ function draw() {
     { x: 559 * width / 800, y: 479 * height / 800, w: 68 * width / 800, h: 21 * height / 800 },
     { x: 137 * width / 800, y: 635 * height / 800, w: 23 * width / 800, h: 20 * height / 800 },
   ]
-
   let greySquare = [
     { x: 162 * width / 800, y: 18 * height / 800 },
     { x: 257 * width / 800, y: 18 * height / 800 },
@@ -252,7 +246,6 @@ function draw() {
     { x: 30 * width / 800, y: 756 * height / 800 },
     { x: 672 * width / 800, y: 774 * height / 800 },
   ]
-
   let redSquare = [
     { x: 48 * width / 800, y: 0 },
     { x: 180 * width / 800, y: 0 },
@@ -336,7 +329,6 @@ function draw() {
     { x: 715 * width / 800, y: 756 * height / 800 },
     { x: 769 * width / 800, y: 756 * height / 800 },
   ]
-
   let blueSquare = [
     { x: 20 * width / 800, y: 18 * height / 800 },
     { x: 20 * width / 800, y: 73 * height / 800 },
@@ -422,18 +414,48 @@ function draw() {
     { x: 756 * width / 800, y: 280 * height / 800 },
   ]
 
+  //get the current amplitude of the audio level
+  let vol = analyzer.getLevel();
+  // Adjust the color depth according to the volume
+  let volNorm = map(vol, 0, 0.3, 0, 255); 
+
+  // Adjust the color to the volume
+  let dynamicYellow = color(234, 212 - volNorm, 51 + volNorm); // Dynamic color of yellow
+  let dynamicRed = color(174 - volNorm, 56, 42 + volNorm); // Dynamic color of red
+  let dynamicBlue = color(72, 106, 188 + volNorm); // Dynamic color of blue
+  let dynamicGrey = color(217, 216 - volNorm, 212); // Dynamic color of grey
+
+  //Draw various shapes.
   drawGraph(yellowLines1, color(234, 212, 51));
   drawGraph(yellowLines2, color(234, 212, 51));
-  drawGraph(yellowPart, color(234, 212, 51));
-  drawGraph(redPart, color(174, 56, 42));
-  drawGraph(bluePart, color(72, 106, 188));
-  drawGraph(greyPart, color(217, 216, 212));
+  drawGraph(yellowPart, dynamicYellow);
+  drawGraph(redPart, dynamicRed);
+  drawGraph(bluePart, dynamicBlue);
+  drawGraph(greyPart, dynamicGrey);
   drawSquare(greySquare, color(217, 216, 212));
-  drawSquare(redSquare, color(174, 56, 42));
-  drawSquare(blueSquare, color(72, 106, 188));
   drawGraph(yellowPart1, color(234, 212, 51));
+  
+  let yOffset = map(vol, 0, 1, 0, -100); // Adjust the vertical position offset according to the volume
+  // Using the map function, draw dynamic red squares
+    drawSquare(redSquare.map(square => ({
+    x: square.x,
+    y: square.y + yOffset, 
+    w: square.w,
+    h: square.h
+  })), color(174, 56, 42));
+  
+  let xOffset = map(vol, 0, 1, 0, -100); // Adjust the horizonal position offset according to the volume
+    // Using the map function, draw dynamic blue squares
+    drawSquare(blueSquare.map(square => ({
+    x: square.x + xOffset,
+    y: square.y, 
+    w: square.w,
+    h: square.h
+  })), color(72, 106, 188));
 }
 
+
+//drawing funciton of graphs
 function drawGraph(graphs, col) {
   fill(col);
   noStroke();
@@ -441,7 +463,7 @@ function drawGraph(graphs, col) {
     rect(graph.x, graph.y, graph.w, graph.h);
   }
 }
-
+//drawing funciton of squares
 function drawSquare(squares, col) {
   fill(col);
   noStroke();
@@ -450,6 +472,7 @@ function drawSquare(squares, col) {
   }
 }
 
+// Response function when window size changes
 function windowResized() {
   resizeCanvas(min(windowWidth, windowHeight), min(windowWidth, windowHeight));
   draw();
